@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logon page</title>
+    <style>
+        .header {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        p{
+            padding-left: 37px;
+            color: white;
+        }
+        a{
+            color: cornflowerblue;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        /* Change color on hover */
+        a:hover {
+
+            color: deeppink;
+        }
+        span{
+            font-size: xx-large;
+            background-color: cornflowerblue;
+
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>3P Audits</h1>
+</div>
+    <p><span style="border: 1px solid black">Auditor View</span></p>
+    <ul>
+    <li><a href="/Users/TPRAGYA/IdeaProjects/3PView/AuditorLogin.html" target="_blank"title="Fetch Asin">Fetch Audit item</a></li>
+    <br>
+        <li><a href="/Users/TPRAGYA/IdeaProjects/3PView/PendingItemsUI.html" target="_blank">List Pending items</a></li>
+    </ul>
+<p><span style="border: 1px solid black">Manager View</span></p>
+<ul>
+    <li><input style="color: cornflowerblue"  type="file" name="inputfile"
+               id="inputfile" ></li>
+    <br>
+
+    <pre id="output"></pre>
+    <br>
+    <li><a href="/Users/TPRAGYA/IdeaProjects/3PView/PendingItemsUI.html" target="_blank">List Pending items/Assign items</a></li>
+</ul>
+
+
+<script>
+
+    function getData(){
+        console.log("Started getData")
+        url = "https://t6goeicxsk.execute-api.us-east-2.amazonaws.com/dev/myresource";
+        fetch(url).then((response)=>{
+            console.log("Inside first then")
+            return response.json();
+        }).then((data)=>{
+            console.log("Inside second then")
+            console.log(data);
+        })
+    }
+
+
+    function postData(){
+
+        url = "https://api.github.com/users";
+        data = '{"name":"harglry347485945","salary":"123","age":"23"}'
+        params = {
+            method:'post',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+            body: data
+        }
+        console.log("started post data")
+        fetch(url, params).then(response=> {console.log("inside first");
+            response.json()})
+            .then(data => {console.log("inside second")
+                console.log(data)})
+
+    }
+    postData()
+    getData()
+
+
+</script>
+
+
+
+
+</body>
+</html>
